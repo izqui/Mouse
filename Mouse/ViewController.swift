@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         }
         
         go {
-            for {
+            while true {
                 let acData = <-ac as CMAccelerometerData
             }
         }

@@ -14,8 +14,8 @@ infix operator  <- { associativity left }
 func <- (c: Chan, value: AnyObject?) { c.send(value) }
 func <- (inout value: AnyObject?, chan: Chan) { value = chan.recv() }
 
-prefix operator p<- {}
-prefix assignment func <- (inout chan: Chan) -> AnyObject? { return chan.recv() }
+prefix operator <- {}
+prefix func <- (inout chan: Chan) -> AnyObject? { return chan.recv() }
 
 class Chan {
     class Waiter : NSObject {
