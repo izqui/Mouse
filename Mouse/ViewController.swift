@@ -49,29 +49,43 @@ class ViewController: UIViewController {
         self.canvas = Canvas(frame: self.view.frame)
         self.view.addSubview(self.canvas!)
         
-        self.run()
+        //self.accelerometer()
+        //self.gyroscope()
+        self.deviceMotion()
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func run() {
+    func deviceMotion() {
         
-        var ac = Chan(buffer:20)
-        var gy = Chan(buffer:20)
-        go {
-            self.accelerometer(ac)
-            self.gyroscope(gy)
-        }
+        var s0 = self.canvas!.path.currentPoint
+        var v0 = CGPoint(x: 0, y: 0)
         
-        go {
-            while true {
-                let acData = <-ac as CMAccelerometerData
+        let t = CGFloat(1.0/20.0)
+        
+        if self.motionManager.deviceMotionAvailable && !motionManager.deviceMotionActive {
+            self.motionManager.deviceMotionUpdateInterval = Double(t)
+            self.motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
+                
+                (data: CMDeviceMotion!, error: NSError!) in
+                
+                self.canvas!.setNeedsDisplay()
+                
+                let a = CGPoint(x: CGFloat(data.userAcceleration.x)*30000, y: CGFloat(data.userAcceleration.y)*30000)
+                
+                let s = CGPoint(x: s0.x + v0.x*t + a.x*pow(t,2.0), y: s0.y + v0.y*t + a.y*pow(t,2.0))
+                v0 = CGPoint(x: v0.x + a.x * t, y: v0.y + a.y * t)
+                
+                self.canvas?.addPoint(s)
+                //println("\(data.acceleration.x),\(data.acceleration.y)")
+                return
             }
         }
+
     }
     
-    func accelerometer(cb: Chan) {
+    func accelerometer() {
         
         var s0 = self.canvas!.path.currentPoint
         var v0 = CGPoint(x: 0, y: 0)
@@ -98,7 +112,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func gyroscope(cb: Chan) {
+    func gyroscope() {
         
         if self.motionManager.gyroAvailable && !motionManager.gyroActive {
             self.motionManager.gyroUpdateInterval = 1.0/20.0
@@ -112,6 +126,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

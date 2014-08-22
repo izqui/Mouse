@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E1AC5B1419A7D48500764AF5 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC5B1319A7D48500764AF5 /* Channel.swift */; };
 		E1E3141119A7B95500506065 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3141019A7B95500506065 /* AppDelegate.swift */; };
 		E1E3141419A7B95500506065 /* Mouse.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1E3141219A7B95500506065 /* Mouse.xcdatamodeld */; };
 		E1E3141619A7B95500506065 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E3141519A7B95500506065 /* ViewController.swift */; };
@@ -28,7 +27,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E1AC5B1319A7D48500764AF5 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		E1E3140B19A7B95500506065 /* Mouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E3140F19A7B95500506065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E3141019A7B95500506065 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 			children = (
 				E1E3141019A7B95500506065 /* AppDelegate.swift */,
 				E1E3141519A7B95500506065 /* ViewController.swift */,
-				E1AC5B1319A7D48500764AF5 /* Channel.swift */,
 				E1E3141719A7B95500506065 /* Main.storyboard */,
 				E1E3141A19A7B95500506065 /* Images.xcassets */,
 				E1E3141219A7B95500506065 /* Mouse.xcdatamodeld */,
@@ -219,7 +216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1E3141619A7B95500506065 /* ViewController.swift in Sources */,
-				E1AC5B1419A7D48500764AF5 /* Channel.swift in Sources */,
 				E1E3141119A7B95500506065 /* AppDelegate.swift in Sources */,
 				E1E3141419A7B95500506065 /* Mouse.xcdatamodeld in Sources */,
 			);
